@@ -100,7 +100,7 @@ def _render_results(results: list[dict[str, Any]]) -> None:
         st.markdown(
             f"""
             <div class="track">
-              <div class="score">{index:02d} / MATCH {score:.0%}</div>
+              <div class="score">{index:02d} / FEATURE SIM {score:.0%}</div>
               <div class="track-name">{name}</div>
               <div class="track-meta">{artist} &nbsp;·&nbsp; {reasons}</div>
             </div>

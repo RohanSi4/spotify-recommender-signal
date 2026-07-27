@@ -10,6 +10,6 @@ def test_credential_free_demo_ranks_tracks() -> None:
     app.button[0].click().run()
 
     assert not app.exception
-    result_cards = [item.value for item in app.markdown if "MATCH" in item.value]
+    result_cards = [item.value for item in app.markdown if "FEATURE SIM" in item.value]
     assert len(result_cards) == 10
     assert "Afterglow Avenue 07" in result_cards[0]

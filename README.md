@@ -82,7 +82,11 @@ weighted distance, and explains the closest dimensions.
 Its 72-track fixture is only for repeatable tests. It is not the catalog behind
 the live product.
 
+It lives in `prototype/`, so the shipped product is what you land in at the
+repository root.
+
 ~~~bash
+cd prototype
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
@@ -91,7 +95,7 @@ ruff check .
 python evaluate.py --json
 ~~~
 
-Two ways to run the prototype, both credential-free:
+Two ways to run the prototype, both credential-free, also from `prototype/`:
 
 ~~~bash
 python main.py --mood focus --limit 10   # CLI over the offline fixture

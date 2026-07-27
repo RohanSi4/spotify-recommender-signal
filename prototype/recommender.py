@@ -265,33 +265,6 @@ class SpotifyRecommender:
             ) from exc
         return [self._spotify_track(track) for track in response.get("tracks", [])]
 
-    def hybrid_recommendations(
-        self,
-        seed_tracks: Sequence[Mapping[str, Any]],
-        user_tracks: Sequence[Mapping[str, Any]],
-        num_recommendations: int = 20,
-        spotify_weight: float = 0.35,
-    ) -> list[Track]:
-        """Fuse local and Spotify rankings; gracefully use local ranking alone."""
-        local = self.content_based_recommendations(seed_tracks, user_tracks, num_recommendations * 2)
-        try:
-            remote = self.get_spotify_recommendations(
-                seed_tracks=[str(track["id"]) for track in seed_tracks if track.get("id")],
-                limit=num_recommendations * 2,
-            )
-        except SpotifyCapabilityError:
-            return local[:num_recommendations]
-
-        weight = float(np.clip(spotify_weight, 0.0, 1.0))
-        combined: dict[str, tuple[Track, float]] = {}
-        for source_weight, ranking in ((1.0 - weight, local), (weight, remote)):
-            for rank, track in enumerate(ranking, start=1):
-                track_id = str(track.get("id"))
-                previous_track, previous_score = combined.get(track_id, (dict(track), 0.0))
-                combined[track_id] = (previous_track, previous_score + source_weight / (60 + rank))
-        ranked = sorted(combined.values(), key=lambda item: (-item[1], str(item[0].get("id", ""))))
-        return [{**track, "fusion_score": round(score, 6)} for track, score in ranked[:num_recommendations]]
-
     @staticmethod
     def _spotify_track(track: Mapping[str, Any]) -> Track:
         return {
