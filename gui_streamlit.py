@@ -102,7 +102,7 @@ def _render_results(results: list[dict[str, Any]]) -> None:
             <div class="track">
               <div class="score">{index:02d} / MATCH {score:.0%}</div>
               <div class="track-name">{name}</div>
-              <div class="track-meta">{artist} &nbsp;—&nbsp; {reasons}</div>
+              <div class="track-meta">{artist} &nbsp;·&nbsp; {reasons}</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -195,7 +195,7 @@ def main() -> None:
             st.warning("This source has no tracks to rank.")
         else:
             labels = {
-                f"{track.get('name')} — {', '.join(track.get('artists', []))}": track for track in catalog
+                f"{track.get('name')} · {', '.join(track.get('artists', []))}": track for track in catalog
             }
             col_input, col_limit = st.columns([4, 1])
             with col_input:

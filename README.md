@@ -91,5 +91,17 @@ ruff check .
 python evaluate.py --json
 ~~~
 
+Two ways to run the prototype, both credential-free:
+
+~~~bash
+python main.py --mood focus --limit 10   # CLI over the offline fixture
+streamlit run gui_streamlit.py           # Streamlit UI, demo catalog by default
+~~~
+
+`gui.py` is only a launcher that forwards to `gui_streamlit.py`. The Streamlit
+"My Spotify" tab needs OAuth credentials in `.env` and depends on the
+audio-features endpoint, which Spotify now returns 403 for on new apps. Demo
+mode is the path that always works.
+
 The Python prototype shows where the idea began. The Spotify-backed TypeScript
 app is the current product.

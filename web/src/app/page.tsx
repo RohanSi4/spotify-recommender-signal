@@ -9,7 +9,7 @@ export default function Home() {
         <nav aria-label="Page links">
           <a href="#try-it">Try it</a>
           <a href="#method">How it works</a>
-          <a href="https://github.com/RohanSi4/spotifyrecommender" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/RohanSi4/spotify-recommender-signal" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
@@ -72,7 +72,7 @@ export default function Home() {
       <footer>
         <a className="brand" href="#top"><SignalMark compact /><span>Signal</span></a>
         <p>Designed and built by Rohan Singh</p>
-        <a href="https://github.com/RohanSi4/spotifyrecommender" target="_blank" rel="noreferrer">View the code ↗</a>
+        <a href="https://github.com/RohanSi4/spotify-recommender-signal" target="_blank" rel="noreferrer">View the code ↗</a>
       </footer>
     </main>
   );

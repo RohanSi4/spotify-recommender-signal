@@ -13,7 +13,7 @@ def _print_tracks(tracks: list[dict]) -> None:
     for index, track in enumerate(tracks, 1):
         artist = ", ".join(track.get("artists", []))
         reasons = ", ".join(track.get("match_reasons", []))
-        print(f"{index:>2}. {track['name']} — {artist} ({track['score']:.1%}; {reasons})")
+        print(f"{index:>2}. {track['name']} by {artist} ({track['score']:.1%}; {reasons})")
 
 
 def main() -> None:
