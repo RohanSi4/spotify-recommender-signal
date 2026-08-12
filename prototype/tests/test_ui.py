@@ -1,8 +1,12 @@
+from pathlib import Path
+
 from streamlit.testing.v1 import AppTest
+
+APP = Path(__file__).resolve().parent.parent / "gui_streamlit.py"
 
 
 def test_credential_free_demo_ranks_tracks() -> None:
-    app = AppTest.from_file("gui_streamlit.py", default_timeout=10).run()
+    app = AppTest.from_file(str(APP), default_timeout=10).run()
     assert not app.exception
     assert app.radio[0].value == "Demo catalog"
     assert app.metric[0].value == "72"
